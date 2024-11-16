@@ -42,4 +42,4 @@ portfolio/
 └── src/
     └── App.js
 
-    https://portifolio-andre-junior.netlify.app
+    🔗 [Portfolio Online](https://portifolio-andre-junior.netlify.app)
