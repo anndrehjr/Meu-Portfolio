@@ -41,5 +41,6 @@ portfolio/
 │   └── 2.png
 └── src/
     └── App.js
+## 🌐 **Acesse o Portfólio Online**
 
-    🔗 [Portfolio Online](https://portifolio-andre-junior.netlify.app)
+🔗 **Acesse o portfólio completo**: [Portfolio Online](https://portifolio-andre-junior.netlify.app)
