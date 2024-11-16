@@ -1,10 +1,8 @@
-'use client'
-
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Card, CardContent } from './components/Card';
-import { Button } from './components/Button';
-import { Github, ExternalLink, ChevronDown, Sun, Moon, Linkedin, Mail } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Card, CardContent } from './src/components/Card';
+import { Button } from './src/components/Button';
+import { Github, ExternalLink, ChevronDown } from 'lucide-react';
 
 const projects = [
   {
@@ -53,12 +51,7 @@ const timelineData = [
 ];
 
 export default function App() {
-  const [theme, setTheme] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') || 'light';
-    }
-    return 'light';
-  });
+  const [theme, setTheme] = useState('light');
   const [activeSection, setActiveSection] = useState('sobre');
   const [githubData, setGithubData] = useState(null);
   const sectionRefs = {
@@ -70,9 +63,6 @@ export default function App() {
 
   useEffect(() => {
     document.body.classList.toggle('dark', theme === 'dark');
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('theme', theme);
-    }
   }, [theme]);
 
   useEffect(() => {
@@ -111,65 +101,12 @@ export default function App() {
     setTheme(prevTheme => prevTheme === 'dark' ? 'light' : 'dark');
   };
 
+  // Landing Page Section
   const renderLanding = () => (
-    <div className="min-h-screen relative overflow-hidden">
-      <div className={`absolute inset-0 transition-opacity duration-1000 ${theme === 'light' ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="absolute inset-0 bg-gradient-to-br from-red-500 via-purple-500 to-pink-500">
-          <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px] opacity-20"></div>
-        </div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-white/30"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              width: `${Math.random() * 6 + 2}px`,
-              height: `${Math.random() * 6 + 2}px`,
-            }}
-            animate={{
-              y: [0, -20, 0],
-              opacity: [1, 0.5, 1],
-            }}
-            transition={{
-              duration: Math.random() * 2 + 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </div>
-      <div className={`absolute inset-0 transition-opacity duration-1000 ${theme === 'dark' ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
-          <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px] opacity-10"></div>
-        </div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
-        {[...Array(50)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-white/10"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              width: `${Math.random() * 2 + 1}px`,
-              height: `${Math.random() * 2 + 1}px`,
-            }}
-            animate={{
-              scale: [1, 1.5, 1],
-              opacity: [0.7, 1, 0.7],
-            }}
-            transition={{
-              duration: Math.random() * 3 + 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </div>
-      <div className="relative z-10 h-screen flex flex-col items-center justify-center text-white">
+    <div className="min-h-screen relative bg-gradient-to-br from-red-700 via-red-600 to-red-500 dark:from-red-900 dark:via-blue-900 dark:to-blue-800">
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
         <motion.h1
-          className="text-6xl md:text-8xl font-bold mb-4 text-center"
+          className="text-6xl md:text-8xl font-bold mb-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -177,7 +114,7 @@ export default function App() {
           ANDRE JUNIOR
         </motion.h1>
         <motion.h2
-          className="text-2xl md:text-3xl text-center"
+          className="text-2xl md:text-3xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
@@ -185,22 +122,20 @@ export default function App() {
           Front-End Developer
         </motion.h2>
         <motion.button
-          className="absolute bottom-10 group"
+          className="absolute bottom-10 animate-bounce"
           onClick={() => scrollToSection('sobre')}
-          whileHover={{ y: 5 }}
-          transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >
-          <ChevronDown size={40} className="text-white/80 group-hover:text-white transition-colors" />
+          <ChevronDown size={40} />
         </motion.button>
       </div>
     </div>
   );
 
   const renderHeader = () => (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 bg-opacity-80 backdrop-blur-sm">
       <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
         <motion.h1
-          className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-pink-600 dark:from-red-400 dark:to-pink-400"
+          className="text-2xl font-bold text-red-600 dark:text-red-400"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
@@ -208,7 +143,7 @@ export default function App() {
           Meu Portfólio
         </motion.h1>
         <motion.div
-          className="flex items-center space-x-6"
+          className="flex space-x-4"
           variants={staggerChildren}
           initial="initial"
           animate="animate"
@@ -216,11 +151,7 @@ export default function App() {
           {['sobre', 'experiencias', 'projetos', 'contato'].map((section) => (
             <motion.button
               key={section}
-              className={`capitalize text-sm font-medium transition-colors ${
-                activeSection === section 
-                  ? 'text-red-600 dark:text-red-400' 
-                  : 'text-gray-600 hover:text-red-600 dark:text-gray-400 dark:hover:text-red-400'
-              }`}
+              className={`capitalize ${activeSection === section ? 'text-red-500' : 'text-gray-600 dark:text-gray-300'}`}
               onClick={() => scrollToSection(section)}
               variants={fadeInUp}
             >
@@ -229,34 +160,11 @@ export default function App() {
           ))}
           <motion.button
             onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             variants={fadeInUp}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <AnimatePresence mode="wait" initial={false}>
-              {theme === 'dark' ? (
-                <motion.div
-                  key="moon"
-                  initial={{ y: 10, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -10, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Moon className="w-5 h-5 text-yellow-500" />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="sun"
-                  initial={{ y: 10, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -10, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Sun className="w-5 h-5 text-yellow-500" />
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {theme === 'dark' ? '☀️' : '🌙'}
           </motion.button>
         </motion.div>
       </nav>
@@ -275,15 +183,15 @@ export default function App() {
       <div className="container mx-auto px-6">
         <motion.div variants={fadeInUp} className="text-center mb-8">
           <h2 className="text-4xl font-bold text-red-600 dark:text-red-400">Sobre</h2>
-          <p className="text-gray-600 dark:text-gray-400">Vivendo Um Sonho</p>
+          <p className="text-gray-600 dark:text-gray-400">Vivendo Um</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div variants={fadeInUp} className="relative">
             <img
-              src="/menino.png"
+              src="/menino.png?height=400&width=250"
               alt="Developer Illustration"
-              className="w-full max-w-md mx-auto rounded-lg shadow-lg"
+              className="w-full max-w-md mx-auto"
             />
             <div className="absolute inset-0 bg-red-500/20 blur-3xl -z-10"></div>
           </motion.div>
@@ -301,15 +209,12 @@ export default function App() {
 
               <div className="grid grid-cols-3 md:grid-cols-4 gap-4">
                 {['Asterisk', 'Next.js', 'Node.js', 'PHP', 'HTML', 'CSS', 'MySQL', 'Linux', 'GitHub'].map((tech) => (
-                  <motion.div
+                  <div
                     key={tech}
                     className="px-4 py-2 bg-red-100 dark:bg-red-900 rounded-full text-sm text-red-700 dark:text-red-300 text-center"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95
-                    }}
                   >
                     {tech}
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -423,22 +328,22 @@ export default function App() {
           {githubData && (
             <Button className="bg-white text-red-600 hover:bg-red-100">
               <a href={githubData.html_url} target="_blank" rel="noopener noreferrer" className="flex items-center">
-                <Github className="h-5 w-5 mr-2" />
+                <Github className="h-4 w-4 mr-2" />
                 GitHub
               </a>
             </Button>
           )}
           <Button className="bg-white text-red-600 hover:bg-red-100">
-            <a href="https://www.linkedin.com/in/anndreh-aguiar/" target="_blank" rel="noopener noreferrer" className="flex items-center">
-              <Linkedin className="h-5 w-5 mr-2" />
-              LinkedIn
-            </a>
+            <svg className="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+            LinkedIn
           </Button>
           <Button className="bg-white text-red-600 hover:bg-red-100">
-            <a href="mailto:anndreh01@gmail.com" className="flex items-center">
-              <Mail className="h-5 w-5 mr-2" />
-              Email
-            </a>
+            <svg className="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 3v18h24V3H0zm21.518 2L12 12.713 2.482 5h19.036zM2 19V7.183l10 8.104 10-8.104V19H2z" />
+            </svg>
+            Email
           </Button>
         </motion.div>
       </div>
