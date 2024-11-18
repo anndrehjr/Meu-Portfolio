@@ -77,6 +77,11 @@ export default function App() {
   };
 
   useEffect(() => {
+    // Scroll to top when the component mounts (page is loaded/refreshed)
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     document.body.classList.toggle('dark', theme === 'dark');
     if (typeof window !== 'undefined') {
       localStorage.setItem('theme', theme);
