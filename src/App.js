@@ -428,7 +428,6 @@ export default function App() {
       </div>
     </motion.section>
   );
-
   const renderContactSection = () => (
     <motion.section
       ref={sectionRefs.contato}
