@@ -13,8 +13,8 @@ const projects = [
     title: "E-Commerce ",
     description: "Bem-vindo ao Mugs & More, um site de loja online para produtos personalizados, como canecas, cadernos e muito mais! 🌟 O objetivo é oferecer uma experiência única aos nossos clientes com designs exclusivos e uma navegação simples e intuitiva.",
     imageUrl: "/1.png",
-    projectUrl: "https://personalizadosaguiar.netlify.app",
-    githubUrl: "https://github.com/anndrehjr/project-loja-mm",
+    projectUrl: "https://www.personalizado-aguiar.shop",
+    githubUrl: "https://github.com/anndrehjr/E-Commerce",
   },
   {
     id: 2,
@@ -24,7 +24,16 @@ const projects = [
     projectUrl: "https://anime-memoria.netlify.app",
     githubUrl: "https://github.com/anndrehjr/Jogo-da-memoria",
   },
+  {
+    id: 3,
+    title: "Ferramentas Uteis",
+    description: "Uma coleção super legal de ferramentas de conversão para facilitar sua vida! 🎯",
+    imageUrl: "/3.png",
+    projectUrl: "https://ferramentas-jr.vercel.app",
+    githubUrl: "https://github.com/anndrehjr/ferramantas-jr",
+  },
 ];
+
 
 const timelineData = [
   {
@@ -46,9 +55,15 @@ const timelineData = [
     description: "Como web designer, crio layouts atraentes e funcionais, sempre focando na melhor experiência do usuário e garantindo uma identidade visual única para cada projeto"
   },
   {
+    title: "Instrutor de Informática",
+    company: "Prepara Cursos",
+    period: "2017 - 2019",
+    description: "Desenvolvi e implementei planos de aula, auxiliei os alunos noaprendizado de pacotes de software, linguagens de programaçãoe outras habilidades técnicas, além de fornecer suporteindividualizado conforme necessário"
+  },
+  {
     title: "Tecnico Em Informatica",
     company: "Assim Provedor de Internet / Freelance",
-    period: "2014 - 2019",
+    period: "2014 - 2017",
     description: "Como técnico em informática, sou responsável por solucionar problemas técnicos e fornecer suporte em hardware e software, garantindo o bom funcionamento dos sistemas."
   },
 ];
