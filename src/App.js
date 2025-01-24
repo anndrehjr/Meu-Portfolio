@@ -32,6 +32,14 @@ const projects = [
     projectUrl: "https://ferramentas-jr.vercel.app",
     githubUrl: "https://github.com/anndrehjr/ferramantas-jr",
   },
+   {
+    id:4,
+    title:" Site De Serviços" ,
+    description:"Um site de serviços para empresas e profissionais autônomos. 🚀",
+    imageUrl: "/4.png",
+    projectUrl:"https://servico-aguiar.vercel.app",
+    githubUrl:"https://github.com/anndrehjr/servico-aguiar",
+   }
 ];
 
 
