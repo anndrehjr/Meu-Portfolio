@@ -233,7 +233,7 @@ export default function App() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          Meu Portfólio
+          Meu Portefólio
         </motion.h1>
         <motion.div
           className="flex items-center space-x-6"
