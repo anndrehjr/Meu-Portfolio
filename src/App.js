@@ -39,7 +39,16 @@ const projects = [
     imageUrl: "/4.png",
     projectUrl:"https://servico-aguiar.vercel.app",
     githubUrl:"https://github.com/anndrehjr/servico-aguiar",
-   }
+   },
+   {
+    id:5,
+    title:"E-Commerce-Fazendas",
+    description:"Site para demonstrar propriedades rurais, como sítios e fazendas. 🌟",
+    imageUrl:"/5.png",
+    projectUrl:"https://e-commerc-fazendas.vercel.app",
+    githubUrl:"https://github.com/anndrehjr/e-commerce_fazendas",
+  }
+
 ];
 
 
