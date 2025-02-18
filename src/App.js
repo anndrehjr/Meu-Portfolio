@@ -187,7 +187,7 @@ export default function App() {
       </div>
       <div className={`absolute inset-0 transition-opacity duration-1000 ${theme === 'dark' ? 'opacity-100' : 'opacity-0'}`}>
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
-          <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px] opacity-10"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(255, 255, 255, 0.1)_1px,transparent_1px)] bg-[length:20px_20px] opacity-10"></div>
         </div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
         {[...Array(50)].map((_, i) => (
